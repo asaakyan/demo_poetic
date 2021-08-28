@@ -1,0 +1,46 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+	<meta charset="utf-8" />
+<!-- 	<title>Poetic Translation</title> -->
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
+	<style>
+
+		h1 {text-align: center;}
+
+		.center_div {
+			margin: 0 auto;
+			width: 50%
+				/* value of your choice which suits your alignment */
+		}
+
+	</style>
+</head>
+
+<body>
+	<br>
+	<h1> Poetic Translation</h1> <br>
+	<p class="lead center_div"><b>Poem:</b></p>
+	{% for line in poem %}
+    <p class="lead center_div">{{line}}</p>
+	{% endfor %}
+	<br>
+	<p class="lead center_div"><b>Translation: </b> </p>
+	{% for line in translation %}
+    <p class="lead center_div">{{line}}</p>
+	{% endfor %}
+	<form action = "{{ url_for('home') }}" class="center_div" method="POST">
+    <br>
+      <label for="poem"> <b>Enter a new poem:</b></label>
+      <textarea name="poem" class="form-control" id="poem" rows="3"></textarea>
+      <br>
+      <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+  <br>
+  <br>
+  </body>
+
+</html>
