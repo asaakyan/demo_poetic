@@ -38,34 +38,34 @@
 	<br>
   <form action = "{{ url_for('home') }}" class="center_div" method="POST">
    
-    <label for="lang">Language:</label>
-    <select id="lang" name="lang">
-      <option value="ru">Russian</option>
-      <option value="es">Spanish</option>
-      <option value="pt">Portuguese</option>
-      <option value="it">Italian</option>
-      <option value="de">German</option>
-      <option value="nl">Dutch</option>
-    </select>
-    <br>
-    <br>
+	  <label for="lang">Language:</label>
+	  <select id="lang" name="lang">
+	    <option value="ru_RU">Russian</option>
+	    <option value="es_XX">Spanish</option>
+	    <option value="pt_XX">Portuguese</option>
+	    <option value="it_IT">Italian</option>
+	    <option value="de_DE">German</option>
+	    <option value="nl_XX">Dutch</option>
+	  </select>
+	  <br>
+	  <br>
 
 
-    <label for="model">Model:</label>
-    <select id="model" name="model">
-      <option value="poetic-all">Poetic All</option>
-      <option value="mbart-50">Non-Poetic Multi (ML50)</option>
-    </select>
-    <br>
-    <br>
+	  <label for="model">Model:</label>
+	  <select id="model" name="model">
+	    <option value="poetic-all">Poetic All</option>
+	    <option value="mbart-50">Non-Poetic Multi (ML50)</option>
+	  </select>
+	  <br>
+	  <br>
 
 
 		<label for="poem">Enter a new poem:</label>
-      <textarea name="poem" class="form-control" id="poem" rows="3"></textarea>
-      <br>
-      <button type="submit" class="btn btn-primary">Submit</button>
+	    <textarea name="poem" class="form-control" id="poem" rows="3"></textarea>
+	    <br>
+	    <button type="submit" class="btn btn-primary">Submit</button>
 
-</form>
+	</form>
 
   <br>
   <br>
