@@ -10,15 +10,22 @@ app = Flask(__name__)
 @app.route("/", methods=["GET", "POST"])
 def home():
 	if (request.method == "POST"):
-		poem = request.form["poem"]
-		print('poem:')
-		print(poem)
+		form = request.form
+		poem = form["poem"]
+		lang = form["lang"]
+		model = form["model"]
+		# print("lang:")
+		# print(lang)
+		# print("model:")
+		# print(model)
+		# print('poem:')
+		# print(poem)
 		poem_lines = poem.split('\n')
-		return render_template("translation.html", poem=poem_lines, translation=get_transaltion(poem_lines))
+		return render_template("translation.html", poem=poem_lines, translation=get_transaltion(poem_lines, lang, model))
 
 	return render_template("index.html", f='')
 
-def get_transaltion(poem_lines):
+def get_transaltion(poem_lines, lang, model):
 	trans_lines = []
 	for line in poem_lines:
 		trans_lines.append(line.strip()[::-1])

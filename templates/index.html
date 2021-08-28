@@ -18,11 +18,35 @@
 </head>
 
 <body>
+    <br>
+    <h1>Poetic Translation</h1> <br>
+   
     <form action = "{{ url_for('home') }}" class="center_div" method="POST">
-      <br>
-        <h1>Poetic Translation</h1> <br>
+       
+        <label for="lang">Language:</label>
+        <select id="lang" name="lang">
+          <option value="ru">Russian</option>
+          <option value="es">Spanish</option>
+          <option value="pt">Portuguese</option>
+          <option value="it">Italian</option>
+          <option value="de">German</option>
+          <option value="nl">Dutch</option>
+        </select>
+        <br>
+        <br>
 
-        <label for="poem"><b>Enter a poem:</b></label>
+
+        <label for="model">Model:</label>
+        <select id="model" name="model">
+          <option value="poetic-all">poetic-all</option>
+          <option value="multi-opus">multi-opus</option>
+          <option value="mbart-50">mbart-50</option>
+        </select>
+        <br>
+        <br>
+
+
+        <label for="poem">Enter a poem:</label>
         <textarea name="poem" class="form-control" id="poem" rows="3"></textarea>
         <br>
         <button type="submit" class="btn btn-primary">Submit</button>
