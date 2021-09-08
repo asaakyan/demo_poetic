@@ -35,23 +35,29 @@ def translate(src, src_lang, model_name):
 	if model_name=='mbart-50':
 		model = mbart50_model
 		tokenizer = mbart50_tokenizer
+
 	elif src_lang[:3]+model_name=='ru_poetic_all':
 		model = ru_poetic_all_model
 		tokenizer = ru_poetic_all_tokenizer
+
 	elif src_lang[:3]+model_name=='pt_poetic_all':
 		model = pt_poetic_all_model
 		tokenizer = pt_poetic_all_tokenizer
 
 	elif src_lang[:3]+model_name=='nl_poetic_all':
+		model = de_poetic_all_model
+		tokenizer = de_poetic_all_tokenizer
+	elif src_lang[:3]+model_name=='de_poetic_all':
 		model = nl_poetic_all_model
 		tokenizer = nl_poetic_all_tokenizer
+
 	elif src_lang[:3]+model_name=='es_poetic_all':
 		model = rom_poetic_all_model
 		tokenizer = rom_poetic_all_tokenizer
-		
 	elif src_lang[:3]+model_name=='it_poetic_all':
 		model = rom_poetic_all_model
 		tokenizer = rom_poetic_all_tokenizer
+		
 	else: return "Model name invalid" 
 
 	tokenizer.src_lang = src_lang
@@ -61,17 +67,17 @@ def translate(src, src_lang, model_name):
 
 if __name__ == '__main__':
 
-	print("Loading Dutch poetic model")
-	nl_poetic_all_tokenizer = AutoTokenizer.from_pretrained("TuhinColumbia/dutchpoetrymany")
-	nl_poetic_all_model = AutoModelForSeq2SeqLM.from_pretrained("TuhinColumbia/dutchpoetrymany")
+	# print("Loading Dutch poetic model")
+	# nl_poetic_all_tokenizer = AutoTokenizer.from_pretrained("TuhinColumbia/dutchpoetrymany")
+	# nl_poetic_all_model = AutoModelForSeq2SeqLM.from_pretrained("TuhinColumbia/dutchpoetrymany")
 	
 	print("Loading German poetic model")
 	de_poetic_all_tokenizer = AutoTokenizer.from_pretrained("TuhinColumbia/germanpoetrymany")
 	de_poetic_all_model = AutoModelForSeq2SeqLM.from_pretrained("TuhinColumbia/germanpoetrymany")
 
-	print("Loading Italian poetic model")
-	it_poetic_all_tokenizer = AutoTokenizer.from_pretrained("TuhinColumbia/italianpoetrymany")
-	it_poetic_all_model = AutoModelForSeq2SeqLM.from_pretrained("TuhinColumbia/italianpoetrymany")
+	# print("Loading Italian poetic model")
+	# it_poetic_all_tokenizer = AutoTokenizer.from_pretrained("TuhinColumbia/italianpoetrymany")
+	# it_poetic_all_model = AutoModelForSeq2SeqLM.from_pretrained("TuhinColumbia/italianpoetrymany")
 
 	print("Loading Portuguese poetic model")
 	pt_poetic_all_tokenizer = AutoTokenizer.from_pretrained("TuhinColumbia/portugesepoetrymany")
@@ -81,9 +87,9 @@ if __name__ == '__main__':
 	ru_poetic_all_tokenizer = AutoTokenizer.from_pretrained("TuhinColumbia/russianpoetrymany")
 	ru_poetic_all_model = AutoModelForSeq2SeqLM.from_pretrained("TuhinColumbia/russianpoetrymany")
 
-	print("Loading Spanish poetic model")
-	es_poetic_all_tokenizer = AutoTokenizer.from_pretrained("TuhinColumbia/spanishpoetrymany")
-	es_poetic_all_model = AutoModelForSeq2SeqLM.from_pretrained("TuhinColumbia/spanishpoetrymany")
+	# print("Loading Spanish poetic model")
+	# es_poetic_all_tokenizer = AutoTokenizer.from_pretrained("TuhinColumbia/spanishpoetrymany")
+	# es_poetic_all_model = AutoModelForSeq2SeqLM.from_pretrained("TuhinColumbia/spanishpoetrymany")
 
 	print("Loading Romance poetic model")
 	rom_poetic_all_tokenizer = AutoTokenizer.from_pretrained("TuhinColumbia/romancelanguagepoetry")
