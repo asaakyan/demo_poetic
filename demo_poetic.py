@@ -1,5 +1,5 @@
 from flask import Flask, request, render_template
-from transformers import AutoTokenizer, AutoModelForSeq2SeqLM, MBartForConditionalGeneration, MBart50TokenizerFast
+from transformers import MBartForConditionalGeneration, MBart50TokenizerFast
 import os, sys
 import numpy as np
 from flask_ngrok import run_with_ngrok
