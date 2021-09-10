@@ -13,12 +13,6 @@ def home():
 		poem = form["poem"]
 		lang = form["lang"]
 		model_name = form["model"]
-		# print("lang:")
-		# print(lang)
-		# print("model:")
-		# print(model)
-		# print('poem:')
-		# print(poem)
 		poem_lines = poem.split('\n')
 		return render_template("translation.html", poem=poem_lines, translation=get_transaltion(poem_lines, lang, model_name))
 
@@ -67,33 +61,25 @@ def translate(src, src_lang, model_name):
 
 if __name__ == '__main__':
 
-	# print("Loading Dutch poetic model")
-	# nl_poetic_all_tokenizer = AutoTokenizer.from_pretrained("TuhinColumbia/dutchpoetrymany")
-	# nl_poetic_all_model = AutoModelForSeq2SeqLM.from_pretrained("TuhinColumbia/dutchpoetrymany")
+	
 	
 	print("Loading German poetic model")
-	de_poetic_all_tokenizer = AutoTokenizer.from_pretrained("TuhinColumbia/germanpoetrymany")
-	de_poetic_all_model = AutoModelForSeq2SeqLM.from_pretrained("TuhinColumbia/germanpoetrymany")
+	de_poetic_all_tokenizer = MBart50Tokenizer.from_pretrained("TuhinColumbia/germanpoetrymany")
+	de_poetic_all_model = MBartForConditionalGeneration.from_pretrained("TuhinColumbia/germanpoetrymany")
 
-	# print("Loading Italian poetic model")
-	# it_poetic_all_tokenizer = AutoTokenizer.from_pretrained("TuhinColumbia/italianpoetrymany")
-	# it_poetic_all_model = AutoModelForSeq2SeqLM.from_pretrained("TuhinColumbia/italianpoetrymany")
 
 	print("Loading Portuguese poetic model")
-	pt_poetic_all_tokenizer = AutoTokenizer.from_pretrained("TuhinColumbia/portugesepoetrymany")
-	pt_poetic_all_model = AutoModelForSeq2SeqLM.from_pretrained("TuhinColumbia/portugesepoetrymany")
+	pt_poetic_all_tokenizer = MBart50Tokenizer.from_pretrained("TuhinColumbia/portugesepoetrymany")
+	pt_poetic_all_model = MBartForConditionalGeneration.from_pretrained("TuhinColumbia/portugesepoetrymany")
 
 	print("Loading Russian poetic model")
-	ru_poetic_all_tokenizer = AutoTokenizer.from_pretrained("TuhinColumbia/russianpoetrymany")
-	ru_poetic_all_model = AutoModelForSeq2SeqLM.from_pretrained("TuhinColumbia/russianpoetrymany")
+	ru_poetic_all_tokenizer = MBart50Tokenizer.from_pretrained("TuhinColumbia/russianpoetrymany")
+	ru_poetic_all_model = MBartForConditionalGeneration.from_pretrained("TuhinColumbia/russianpoetrymany")
 
-	# print("Loading Spanish poetic model")
-	# es_poetic_all_tokenizer = AutoTokenizer.from_pretrained("TuhinColumbia/spanishpoetrymany")
-	# es_poetic_all_model = AutoModelForSeq2SeqLM.from_pretrained("TuhinColumbia/spanishpoetrymany")
 
 	print("Loading Romance poetic model")
-	rom_poetic_all_tokenizer = AutoTokenizer.from_pretrained("TuhinColumbia/romancelanguagepoetry")
-	rom_poetic_all_model = AutoModelForSeq2SeqLM.from_pretrained("TuhinColumbia/romancelanguagepoetry")
+	rom_poetic_all_tokenizer = MBart50Tokenizer.from_pretrained("TuhinColumbia/romancelanguagepoetry")
+	rom_poetic_all_model = MBartForConditionalGeneration.from_pretrained("TuhinColumbia/romancelanguagepoetry")
 
 	print("Loading mBART model")
 	mbart50_model =  MBartForConditionalGeneration.from_pretrained("facebook/mbart-large-50-many-to-one-mmt")
