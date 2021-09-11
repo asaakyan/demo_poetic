@@ -1,5 +1,5 @@
 from flask import Flask, request, render_template
-from transformers import MBartForConditionalGeneration, MBart50TokenizerFast
+from transformers import MBartForConditionalGeneration, MBart50Tokenizer
 import os, sys
 import numpy as np
 from flask_ngrok import run_with_ngrok
@@ -83,6 +83,6 @@ if __name__ == '__main__':
 
 	print("Loading mBART model")
 	mbart50_model =  MBartForConditionalGeneration.from_pretrained("facebook/mbart-large-50-many-to-one-mmt")
-	mbart50_tokenizer = MBart50TokenizerFast.from_pretrained("facebook/mbart-large-50-many-to-one-mmt")
+	mbart50_tokenizer = MBart50Tokenizer.from_pretrained("facebook/mbart-large-50-many-to-one-mmt")
 
 	app.run()
