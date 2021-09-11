@@ -2,9 +2,7 @@ from flask import Flask, request, render_template
 from transformers import MBartForConditionalGeneration, MBart50Tokenizer
 import os, sys
 import numpy as np
-from flask_ngrok import run_with_ngrok
 app = Flask(__name__)
-run_with_ngrok(app) 
 
 @app.route("/", methods=["GET", "POST"])
 def home():
@@ -53,11 +51,14 @@ def translate(src, src_lang, model_name):
 		tokenizer = rom_poetic_all_tokenizer
 		
 	else: return "Model name invalid" 
-
+	
+	model.eval()
 	tokenizer.src_lang = src_lang
-	encoded = tokenizer(src, return_tensors="pt")
-	generated_tokens = model.generate(**encoded, forced_bos_token_id=tokenizer.lang_code_to_id["en_XX"])
-	return tokenizer.batch_decode(generated_tokens, skip_special_tokens=True)[0]
+	inputs = tokenizer(src, return_tensors="pt")
+	generated_tokens = model.generate(**inputs, no_repeat_ngram_size=2, num_beams=5,num_return_sequences=5,forced_bos_token_id=tokenizer.lang_code_to_id["en_XX"])
+	res = tokenizer.batch_decode(generated_tokens, skip_special_tokens=True)
+	res = [(r,len(r.split())) for r in res]
+	return res[0][0]
 
 if __name__ == '__main__':
 
@@ -85,4 +86,4 @@ if __name__ == '__main__':
 	mbart50_model =  MBartForConditionalGeneration.from_pretrained("facebook/mbart-large-50-many-to-one-mmt")
 	mbart50_tokenizer = MBart50Tokenizer.from_pretrained("facebook/mbart-large-50-many-to-one-mmt")
 
-	app.run()
+	app.run(host='0.0.0.0',port=8000, debug=True)
